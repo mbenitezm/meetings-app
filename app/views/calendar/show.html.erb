@@ -1,0 +1,15 @@
+<div class="row">
+  <div class="col-md-12">
+    <h1> Next appointments </h1>
+  </div>
+  <div class="col-md-12">
+    <%= render partial: 'table', locals: { collection: @next_appointments } %>
+  </div>
+  <hr>
+  <div class="col-md-12">
+    <h1> Last appointments </h1>
+  </div>
+  <div class="col-md-12">
+    <%= render partial: 'table', locals: { collection: @last_appointments } %>
+  </div>
+</div>

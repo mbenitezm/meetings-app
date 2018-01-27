@@ -1,0 +1,18 @@
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th scope="col">Id</th>
+      <th scope="col">Start date</th>
+      <th scope="col">End date</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% collection.each do |object| %>
+      <tr>
+          <td><%= object.id %></td>
+          <td><%= object.start %></td>
+          <td><%= object.end %> </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

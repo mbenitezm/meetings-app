@@ -1,3 +1,5 @@
 Rails.application.routes.draw do
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  root 'time_slots#index'
+
+  get 'calendar/:id', to: 'calendar#show', as: 'calendar'
 end
