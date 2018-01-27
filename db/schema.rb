@@ -13,6 +13,7 @@
 ActiveRecord::Schema.define(version: 20180127191104) do
 
   create_table "appointments", force: :cascade do |t|
+    t.string   "uuid"
     t.integer  "calendar_id"
     t.datetime "start"
     t.datetime "end"
@@ -23,18 +24,23 @@ ActiveRecord::Schema.define(version: 20180127191104) do
   end
 
   create_table "calendars", force: :cascade do |t|
+    t.string "uuid"
     t.string "name"
   end
 
   create_table "time_slot_types", force: :cascade do |t|
+    t.string  "uuid"
     t.string  "name"
     t.integer "slot_size"
   end
 
   create_table "time_slots", force: :cascade do |t|
-    t.integer "calendar_id"
-    t.integer "appointment_id"
-    t.integer "time_slot_type_id"
+    t.string   "uuid"
+    t.integer  "calendar_id"
+    t.integer  "appointment_id"
+    t.datetime "start"
+    t.datetime "end"
+    t.integer  "time_slot_type_id"
     t.index ["appointment_id"], name: "index_time_slots_on_appointment_id"
     t.index ["calendar_id"], name: "index_time_slots_on_calendar_id"
     t.index ["time_slot_type_id"], name: "index_time_slots_on_time_slot_type_id"

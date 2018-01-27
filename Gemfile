@@ -50,6 +50,7 @@ group :development do
   # Gems for debugging
   gem "better_errors"
   gem "binding_of_caller"
+  gem 'pry'
 end
 
 # Gem for easier creation of forms
