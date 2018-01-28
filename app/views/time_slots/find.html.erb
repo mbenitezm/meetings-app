@@ -1,0 +1,29 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <h1> Book appointment </h1>
+    </div>
+  </div>
+    <%= simple_form_for :time_slots, url: show_time_slots_path, method: :get do |f| %>
+      <fieldset>
+        <div class="form-group">
+          <label>Calendars (ctrl + click to select multiple calendars)</label>
+          <%= f.input :calendars, collection: @calendars, input_html: { class: "form-control", multiple: true }, label: false %>
+        </div>
+        <div class="form-group">
+          <label>From</label>
+          <%= f.input :start, input_html: { class: "form-control" }, label: false, :as => :datetime_picker %>
+        </div>
+        <div class="form-group">
+          <label>To</label>
+          <%= f.input :end, input_html: { class: "form-control" }, label: false, :as => :datetime_picker %>
+        </div>
+        <div class="form-group">
+          <label>Appointment type</label>
+          <%= f.input :time_slot_type, collection: @time_slot_types, input_html: { class: "form-control" }, label: false %>
+        </div>
+        <%= f.submit 'Find availability', class: "btn btn-primary" %>
+      </fieldset>
+    <% end %>
+  </div>
+</div>

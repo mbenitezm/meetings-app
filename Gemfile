@@ -55,6 +55,10 @@ end
 
 # Gem for easier creation of forms
 gem 'simple_form'
+# Gems to add date picker to forms
+gem "font-awesome-rails"
+gem 'momentjs-rails', '~> 2.9'
+gem 'datetimepicker-rails', github: 'zpaulovics/datetimepicker-rails', branch: 'master', submodules: true
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]

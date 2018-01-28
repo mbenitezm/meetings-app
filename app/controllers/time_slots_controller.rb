@@ -1,10 +1,10 @@
 class TimeSlotsController < ApplicationController
-  def index
+  def find
+    @calendars = Calendar.all
+    @time_slot_types = TimeSlotType.all
   end
 
-  def find_time_slots
-  end
-
-  def book_time_slots
+  def show
+    binding.pry
   end
 end
