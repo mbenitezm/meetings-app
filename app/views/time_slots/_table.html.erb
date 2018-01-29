@@ -1,0 +1,16 @@
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th scope="col">Start date</th>
+      <th scope="col">End date</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% collection.each do |object| %>
+      <tr>
+          <td><%= object[:start] %></td>
+          <td><%= object[:end] %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

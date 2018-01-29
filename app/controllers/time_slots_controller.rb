@@ -5,6 +5,12 @@ class TimeSlotsController < ApplicationController
   end
 
   def show
-    #binding.pry
+    @time_slots = TimeSlot.available(object_params)
+  end
+
+  private
+  def object_params
+    params.require(:time_slot).permit(:from, :to, :time_slot_type, :duration,
+      calendars: [])
   end
 end

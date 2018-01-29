@@ -4,19 +4,23 @@
       <h1> Book appointment </h1>
     </div>
   </div>
-    <%= simple_form_for :time_slots, url: show_time_slots_path, method: :get do |f| %>
+    <%= simple_form_for :time_slot, url: show_time_slots_path, method: :get do |f| %>
       <fieldset>
         <div class="form-group">
           <label>Calendars (ctrl + click to select multiple calendars)</label>
-          <%= f.input :calendars, collection: @calendars, input_html: { class: "form-control", multiple: true }, label: false %>
+          <%= f.input :calendars, collection: @calendars, input_html: { class: "form-control", multiple: true }, include_blank: false, include_hidden: false, label: false %>
         </div>
         <div class="form-group">
           <label>From</label>
-          <%= f.input :start, input_html: { class: "form-control" }, label: false, :as => :datetime_picker %>
+          <%= f.input :from, input_html: { class: "form-control" }, label: false, as: :datetime_picker %>
         </div>
         <div class="form-group">
           <label>To</label>
-          <%= f.input :end, input_html: { class: "form-control" }, label: false, :as => :datetime_picker %>
+          <%= f.input :to, input_html: { class: "form-control" }, label: false, as: :datetime_picker %>
+        </div>
+        <div class="form-group">
+          <label>Duration (in minutes)</label>
+          <%= f.input :duration, input_html: { class: "form-control" }, label: false, as: :integer %>
         </div>
         <div class="form-group">
           <label>Appointment type</label>
