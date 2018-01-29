@@ -20,11 +20,12 @@
           <li class="nav-item">
              <%= link_to 'Book appointment', root_path, class: 'nav-link' %></a>
           </li>
-          <% Calendar.all.each do |calendar| %>
+<!--          <%# Calendar.all.each do |calendar| %>
             <li class="nav-item">
-              <%= link_to calendar.name, calendar_path(id: calendar.id), class: 'nav-link' %></a>
+              <%#= link_to calendar.name, calendar_path(id: calendar.id), class: 'nav-link' %></a>
             </li>
-          <% end %>
+          <%# end %>
+-->
         </ul>
       </div>
     </nav>

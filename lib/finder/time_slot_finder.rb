@@ -14,13 +14,13 @@ module Finder
     def find_time_slots
       calendars = filter_calendars
       minute_calendars = date_calendars_to_minutes(calendars)
-      available_time_slots(minute_calendars).uniq { |ts| ts[:start] }
+      available_time_slots(minute_calendars).uniq { |ts| ts[:start_time] }
     end
 
     def filter_calendars
       @calendars.map do |calendar_id|
         slots = Calendar.find(calendar_id).time_slots.where(appointment_id: nil)
-        slots = slots.where("start >= ?", @from).where("end <= ? ", @to)
+        slots = slots.where("start_time >= ?", @from).where("end_time <= ? ", @to)
 
         !@slot_type.blank? ? slots.where(time_slot_type_id: @slot_type) : slots
       end
@@ -40,9 +40,9 @@ module Finder
 
     def mark_minutes_calendar(minutes_calendar, time_slot)
       id = time_slot.id
-      start = time_slot.start
+      start_time = time_slot.start_time
       slot_size = time_slot.slot_size
-      minute_index = ((start - @from) / 60).to_i
+      minute_index = ((start_time - @from) / 60).to_i
 
       for i in minute_index..minute_index + slot_size - 1
         minutes_calendar[i] = id
@@ -69,8 +69,8 @@ module Finder
       last_slot_id = first_calendar[minute + @duration - 1]
 
       available_slot = {
-        start: TimeSlot.find(first_slot_id).start,
-        end: TimeSlot.find(last_slot_id).end
+        start_time: TimeSlot.find(first_slot_id).start_time,
+        end_time: TimeSlot.find(last_slot_id).end_time
       }
     end
 

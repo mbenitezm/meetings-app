@@ -10,17 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180127191104) do
+ActiveRecord::Schema.define(version: 20180129033346) do
+
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
 
   create_table "appointments", force: :cascade do |t|
     t.string   "uuid"
     t.integer  "calendar_id"
-    t.datetime "start"
-    t.datetime "end"
+    t.datetime "start_time"
+    t.datetime "end_time"
     t.boolean  "completed",   default: false
     t.datetime "created_at",                  null: false
     t.datetime "updated_at",                  null: false
-    t.index ["calendar_id"], name: "index_appointments_on_calendar_id"
+    t.index ["calendar_id"], name: "index_appointments_on_calendar_id", using: :btree
   end
 
   create_table "calendars", force: :cascade do |t|
@@ -38,12 +41,12 @@ ActiveRecord::Schema.define(version: 20180127191104) do
     t.string   "uuid"
     t.integer  "calendar_id"
     t.integer  "appointment_id"
-    t.datetime "start"
-    t.datetime "end"
+    t.datetime "start_time"
+    t.datetime "end_time"
     t.integer  "time_slot_type_id"
-    t.index ["appointment_id"], name: "index_time_slots_on_appointment_id"
-    t.index ["calendar_id"], name: "index_time_slots_on_calendar_id"
-    t.index ["time_slot_type_id"], name: "index_time_slots_on_time_slot_type_id"
+    t.index ["appointment_id"], name: "index_time_slots_on_appointment_id", using: :btree
+    t.index ["calendar_id"], name: "index_time_slots_on_calendar_id", using: :btree
+    t.index ["time_slot_type_id"], name: "index_time_slots_on_time_slot_type_id", using: :btree
   end
 
 end

@@ -7,7 +7,7 @@ class TimeSlot < ApplicationRecord
 
   delegate :slot_size, :name, to: :time_slot_type
 
-  validates :start, :end, presence: true
+  validates :start_time, :end_time, presence: true
 
   def self.available(params)
     Finder::TimeSlotFinder.new(params).find_time_slots
