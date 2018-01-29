@@ -1,6 +1,6 @@
 $(document).on('ready page:change', function() {
   $('.datetimepicker').datetimepicker({
-    defaultDate: moment(),
+    defaultDate: moment(('2015-11-23')),
     icons: {
       date: 'fa fa-calendar',
       time: 'fa fa-clock-o',
