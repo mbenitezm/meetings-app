@@ -3,7 +3,7 @@ class TimeSlot < ApplicationRecord
 
   belongs_to :calendar, inverse_of: :time_slots
   belongs_to :appointment, optional: true
-  belongs_to :time_slot_type
+  belongs_to :time_slot_type, inverse_of: :time_slots
 
   delegate :slot_size, :name, to: :time_slot_type
 
